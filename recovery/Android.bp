@@ -5,10 +5,9 @@
 
 cc_library_static {
     name: "librecovery_updater_xiaomi",
-    include_dirs: [
-        "bootable/deprecated-ota/edify/include",
-        "bootable/recovery",
-        "bootable/recovery/otautil/include",
-    ],
     srcs: ["recovery_updater.cpp"],
+    static_libs: [
+        "libedify",
+        "libotautil",
+    ],
 }
