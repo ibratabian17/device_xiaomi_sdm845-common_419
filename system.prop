@@ -53,6 +53,7 @@ persist.vendor.ims.disableUserAgent=0
 
 # Media
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
+media.stagefright.thumbnail.prefer_hw_codecs=true
 
 # Memory optimizations
 ro.vendor.qti.sys.fw.bservice_enable=true
