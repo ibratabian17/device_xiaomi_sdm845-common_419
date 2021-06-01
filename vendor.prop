@@ -162,6 +162,7 @@ vendor.gralloc.disable_ubwc=0
 vendor.opengles.version=196610
 graphics.gpu.profiler.support=true
 debug.sf.disable_backpressure=1
+debug.sf.latch_unsignaled=0
 
 # IMS
 persist.dbg.volte_avail_ovr=1
