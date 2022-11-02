@@ -11,3 +11,10 @@ ro.lmk.thrashing_limit=70
 ro.lmk.thrashing_limit_decay=30
 ro.lmk.swap_util_max=100
 ro.lmk.swap_free_low_percentage=15
+
+# Power-saving props
+ro.vendor.use_data_netmgrd=true
+ro.vold.umsdirtyratio=20
+ro.ril.disable.power.collapse=0
+power.saving.mode=1
+pm.sleep_mode=1
