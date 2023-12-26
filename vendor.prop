@@ -155,6 +155,7 @@ debug.hwui.use_hint_manager=true
 persist.sys.sf.color_mode=0
 persist.sys.sf.color_saturation=1.0
 persist.sys.sf.native_mode=0
+ro.config.avoid_gfx_accel=true
 ro.hardware.egl=adreno
 ro.hardware.vulkan=adreno
 ro.opengles.version=196610
