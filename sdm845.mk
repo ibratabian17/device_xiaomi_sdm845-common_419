@@ -120,6 +120,13 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio-impl \
     audio.bluetooth.default
 
+# Boot control
+PRODUCT_PACKAGES += \
+    android.hardware.boot-service.qti \
+    android.hardware.boot-service.qti.recovery
+
+$(call soong_config_set, ufsbsg, ufsframework, bsg)
+
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl:32 \
