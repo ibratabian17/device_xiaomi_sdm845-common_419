@@ -6,6 +6,10 @@ ro.af.client_heap_size_kbyte=7168
 ro.config.media_vol_steps=25
 ro.config.vc_call_vol_steps=11
 
+# Blurs
+ro.sf.blurs_are_expensive=1
+ro.surface_flinger.supports_background_blur=1
+
 # Camera
 camera.disable_zsl_mode=true
 
