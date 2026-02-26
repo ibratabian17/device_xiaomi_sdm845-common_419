@@ -17,25 +17,21 @@
 package org.lineageos.settings.dirac;
 
 import android.os.Bundle;
-import android.widget.CompoundButton;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceFragment;
 
 import com.android.settingslib.widget.MainSwitchPreference;
+import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 
 import org.lineageos.settings.R;
 
-public class DiracSettingsFragment extends PreferenceFragment implements
-        Preference.OnPreferenceChangeListener, CompoundButton.OnCheckedChangeListener {
+public class DiracSettingsFragment extends SettingsBasePreferenceFragment implements
+        Preference.OnPreferenceChangeListener {
 
     private static final String PREF_ENABLE = "dirac_enable";
     private static final String PREF_HEADSET = "dirac_headset_pref";
     private static final String PREF_PRESET = "dirac_preset_pref";
-
-    private MainSwitchPreference mSwitchBar;
 
     private ListPreference mHeadsetType;
     private ListPreference mPreset;
@@ -47,9 +43,9 @@ public class DiracSettingsFragment extends PreferenceFragment implements
         DiracUtils.initialize();
         boolean enhancerEnabled = DiracUtils.isDiracEnabled(getActivity());
 
-        mSwitchBar = (MainSwitchPreference) findPreference(PREF_ENABLE);
-        mSwitchBar.addOnSwitchChangeListener(this);
-        mSwitchBar.setChecked(enhancerEnabled);
+        MainSwitchPreference switchBar = findPreference(PREF_ENABLE);
+        switchBar.setOnPreferenceChangeListener(this);
+        switchBar.setChecked(enhancerEnabled);
 
         mHeadsetType = (ListPreference) findPreference(PREF_HEADSET);
         mHeadsetType.setOnPreferenceChangeListener(this);
@@ -63,6 +59,9 @@ public class DiracSettingsFragment extends PreferenceFragment implements
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         switch (preference.getKey()) {
+            case PREF_ENABLE:
+                DiracUtils.setMusic((Boolean) newValue);
+                return true;
             case PREF_HEADSET:
                 DiracUtils.setHeadsetType(Integer.parseInt(newValue.toString()));
                 return true;
@@ -72,15 +71,5 @@ public class DiracSettingsFragment extends PreferenceFragment implements
             default:
                 return false;
         }
-    }
-
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        mSwitchBar.setChecked(isChecked);
-
-        DiracUtils.setMusic(isChecked);
-
-        mHeadsetType.setEnabled(isChecked);
-        mPreset.setEnabled(isChecked);
     }
 }
